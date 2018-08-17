@@ -3,21 +3,12 @@ let express = require("express");
 
 let router = express.Router();
 
-router.get("*", function(req, res) {
-    burger.all(function(err,allBurgers) {
-        if(err) {
-            return res.status(500).end();
-        } else {
-            res.render("index", { burgers: allBurgers });
-        }
-    });
-});
-
 router.get("/api/allburgers", function(req, res) {
     burger.all(function(err,burgers) {
         if(err) {
             res.status(500).end();
         } else {
+            res.status(200);
             res.json(burgers);
         }
     });
@@ -30,8 +21,9 @@ router.post("/api/burger", function(req, res) {
         } else {
             if(result.affectedRows == 0)
                 res.status(400).end();
-            else 
+            else {
                 res.status(200).end();
+            }
         }
     });
 });
@@ -45,6 +37,16 @@ router.put("/api/burger/:id",function(req, res) {
                 res.status(400).end();
             else
                 res.status(200).end();
+        }
+    });
+});
+
+router.get("*", function(req, res) {
+    burger.all(function(err,allBurgers) {
+        if(err) {
+            return res.status(500).end();
+        } else {
+            res.render("index", { burgers: allBurgers });
         }
     });
 });

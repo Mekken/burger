@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="row justify-content-center">
+    <img src="/assets/img/burger.png" width="30%" height="30%" alt="">
+  </div>
   
   <div class="row justify-content-center">
     <h1>Eat-Dat-Burger!</h1>
@@ -11,8 +14,8 @@
         {{#each burgers}}
           {{#unless devoured}}
             <li>
-              {{this.burger_name}}
-              <button class="change-devour" data-id="{{this.id}}" data-devoured="1">
+              <span style="background-color: white;">{{this.burger_name}}</span>
+              <button class="change-devour" data-id="{{this.id}}" data-devoured="0">
                 Devour it!
               </button>
             </li>
@@ -25,7 +28,7 @@
       <ul>
         {{#each burgers}}
           {{#if devoured}}
-            <li>{{this.id}}. {{this.burger_name}}</li>
+            <li style="background: lightgrey;">{{this.id}}. {{this.burger_name}}</li>
           {{/if}}
         {{/each}}
       </ul>
@@ -40,7 +43,7 @@
           <label for="burgerName">Burger Name:</label> <br>
           <input type="text" id="burgerName" name="name">
         </div>
-        <button type="submit">Add Burger</button>
+        <button id="add-burger" type="submit">Add Burger</button>
       </form>
     </div>
   </div>
