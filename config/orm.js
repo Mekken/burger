@@ -1,4 +1,4 @@
-const connection = require("./connection");
+let connection = require("./connection");
 
 let orm = {
     selectAll: function(cb) {
